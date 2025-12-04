@@ -2,9 +2,7 @@
   "buildCommand": "npm run build",
   "framework": null,
   "functions": {
-    "dist/index.cjs": {
-      "runtime": "nodejs20.x"
-    }
+    "dist/index.cjs": {}
   },
   "rewrites": [
     {
@@ -13,7 +11,7 @@
     },
     {
       "source": "/(.*)",
-      "destination": "/dist/public/index.html"
+      "destination": "/index.html"
     }
   ]
 }
