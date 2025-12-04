@@ -1,0 +1,15 @@
+{
+  "buildCommand": "npm run build",
+  "framework": null,
+  "functions": {
+    "dist/index.cjs": {
+      "runtime": "nodejs20.x"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/dist/index.cjs"
+    }
+  ]
+}
