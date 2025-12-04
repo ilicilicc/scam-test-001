@@ -1,9 +1,13 @@
 {
   "buildCommand": "npm run build",
+  "framework": null,
+  "functions": {
+    "dist/index.cjs": {}
+  },
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/api/index.ts"
+      "destination": "/dist/index.cjs"
     },
     {
       "source": "/(.*)",
