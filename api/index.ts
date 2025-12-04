@@ -1,5 +1,5 @@
 import express, { type Request, Response, NextFunction } from "express";
-import { performFullAnalysis } from "../server/routes";
+import { performFullAnalysis } from "../server/analysis";
 
 const app = express();
 app.use(express.json());
