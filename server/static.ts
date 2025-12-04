@@ -10,7 +10,7 @@ import path from "path";
 export function serveStatic(app: Express) {
   // 🚀 FIX: Use process.cwd() and path.join to reliably point to the build output.
   // This calculates the path from the project root: /path/to/project/ + dist/public
-  const distPath = path.join(process.cwd(), "dist", "public");
+  const distPath = path.join(process.cwd(), "dist");
 
   if (!fs.existsSync(distPath)) {
     throw new Error(
