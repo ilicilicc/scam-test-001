@@ -20,7 +20,7 @@ export async function registerRoutes(
   return httpServer;
 }
 
-async function performFullAnalysis(): Promise<AnalysisData> {
+export async function performFullAnalysis(): Promise<AnalysisData> {
   const [structure, quality, validation, performance] = await Promise.all([
     analyzeCodeStructure(),
     analyzeImplementationQuality(),

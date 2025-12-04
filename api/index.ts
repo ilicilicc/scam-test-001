@@ -1,25 +1,26 @@
 import express, { type Request, Response, NextFunction } from "express";
-import { registerRoutes } from "../server/routes";
-import { createServer } from "http";
+import { performFullAnalysis } from "../server/routes";
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
-// Create a server instance for registerRoutes (even if Vercel handles the connection)
-const httpServer = createServer(app);
-
-// Register API routes
-// We need to wrap this in a promise or just call it, but Vercel expects a handler export.
-// Since registerRoutes is async, we need to ensure it's awaited.
-// However, top-level await is supported in Vercel Node.js runtimes.
 
 // Health check route
 app.get("/api/health", (_req, res) => {
   res.status(200).json({ status: "ok" });
 });
 
-await registerRoutes(httpServer, app);
+app.get("/api/analysis", async (_req, res) => {
+  try {
+    const analysisData = await performFullAnalysis();
+    res.json(analysisData);
+  } catch (error) {
+    console.error("Analysis error:", error);
+    res.status(500).json({ error: "Failed to perform analysis" });
+  }
+});
+
+// await registerRoutes(httpServer, app);
 
 // Error handling middleware
 app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
