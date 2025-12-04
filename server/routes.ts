@@ -1,12 +1,12 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import type { AnalysisData } from "@shared/schema";
+import type { AnalysisData } from "../shared/schema";
 
 export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
-  
+
   app.get("/api/analysis", async (_req, res) => {
     try {
       const analysisData = await performFullAnalysis();

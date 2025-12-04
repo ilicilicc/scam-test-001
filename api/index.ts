@@ -14,6 +14,11 @@ const httpServer = createServer(app);
 // Since registerRoutes is async, we need to ensure it's awaited.
 // However, top-level await is supported in Vercel Node.js runtimes.
 
+// Health check route
+app.get("/api/health", (_req, res) => {
+  res.status(200).json({ status: "ok" });
+});
+
 await registerRoutes(httpServer, app);
 
 // Error handling middleware
